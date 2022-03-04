@@ -42,4 +42,26 @@ server <- function(input, output, session) {
   observeEvent(sitc_df(), {
   		shinyWidgets::updateMultiInput(session = session, inputId = "goods_sitc", choices = unique(sitc_df()$code_name))
   })
+
+  # Reactive heading
+  heading <- shiny::reactive({
+  	m <- as.list(input$goods_sitc)
+  	m
+  })
+
+  output$heading <- shiny::renderText({heading()})
+
+  # Reactive blocks
+  blocks <- shiny::reactive({
+  	shiny::req(
+  		input$goods_sitc
+  		)
+
+  	viz_ui_module(data = merch,
+  				  selected = input$goods_sitc)
+  })
+
+  output$data_block <- shiny::renderUI({
+  	blocks()
+  })
 }

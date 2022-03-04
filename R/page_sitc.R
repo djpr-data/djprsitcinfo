@@ -40,6 +40,7 @@ page_sitc <- function(...) {
 					selected = "",
 					width = "100%",
 					options = list(
+						maxItems = 3,
 						non_selected_header = "All goods:",
 						selected_header = "Selected goods:"
 						)
@@ -48,7 +49,7 @@ page_sitc <- function(...) {
 				),
 			column(
 				8,
-
+				h2(shiny::textOutput("heading")),
 				)
 			),
 		br(),

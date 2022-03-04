@@ -21,6 +21,7 @@ Imports:
     readr,
     readsdmx,
     rlang,
+    scales,
     shiny,
     shinyWidgets,
     stringr,
